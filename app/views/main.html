@@ -1,0 +1,153 @@
+<div class="row">
+
+  <!-- MAIN AREA -->
+  <div class="col-sm-8">
+
+    <!-- SETTINGS -->
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="metric-input">Preferred Metric</label>
+          <select id="metric-input" class="form-control" ng-model="metric" ng-options="metric.name for metric in metrics" ng-change="updateData('metric'); updateCalculations()"></select>
+        </div>
+        <div class="form-group">
+          <label for="goal-input">Goal</label>
+          <select id="goal-input" class="form-control" ng-model="goal" ng-options="goal.name for goal in goals" ng-change="updateData('goal'); updateCalculations()"></select>
+        </div>
+        <div class="form-group">
+          <label for="gender-input">Gender</label>
+          <select id="gender-input" class="form-control" ng-model="gender" ng-options="gender.name for gender in genders" ng-change="updateData('gender'); updateCalculations()"></select>
+        </div>
+        <div class="form-group">
+          <label for="activity-input">Activity level</label>
+          <select id="activity-input" class="form-control" ng-model="activity" ng-options="activity.name for activity in activities" ng-change="updateData('activity'); updateCalculations()"></select>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="body-weight-input">Body Weight</label>
+          <input type="number" id="body-weight-input" class="form-control" ng-model="bodyWeight" ng-change="updateData('bodyWeight'); updateCalculations()" min="0" required>
+        </div>
+        <div class="form-group">
+          <label for="body-fat-input">Body Fat Estimation (%)</label>
+          <input type="number" id="body-fat-input" class="form-control" ng-model="bodyFat" ng-change="updateData('bodyFat'); updateCalculations()" min="0" required>
+        </div>
+        <div class="panel panel-primary maintenance-intake">
+          <div class="panel-heading">
+            <h3 class="panel-title">Estimated Daily Maintenance Intake For Activity Level</h3>
+          </div>
+          <div class="panel-body">
+            <p class="text-center"><strong>{{ maintenanceIntake | number: 0 }}</strong> Calories</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end of SETTINGS -->
+
+    <!-- MACRO CALCULATIONS -->
+    <div class="macro-calculations panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Macro calculations</h3>
+      </div>
+      <div class="panel-body">
+        <div class="header-row">
+          <div class="row hidden-xs hidden-sm">
+            <div class="col-sm-offset-4 col-sm-2">
+              <h4>Protein</h4>
+            </div>
+            <div class="col-sm-2">
+              <h4>Carbs</h4>
+            </div>
+            <div class="col-sm-2">
+              <h4>Fat</h4>
+            </div>
+            <div class="col-sm-2">
+              <h4>Calories</h4>
+            </div>
+          </div>
+        </div>
+        <div class="macro-row training-row">
+          <div class="row">
+            <div class="col-sm-4">
+              <h4>Mon / Wed / Fri</h4>
+            </div>
+            <div class="col-sm-2">
+              <p><strong class="hidden-md hidden-lg">Protein</strong> {{ macros.protein[0] | number: 0 }}g</p>
+            </div>
+            <div class="col-sm-2">
+              <p><strong class="hidden-md hidden-lg">Carbs</strong> {{ macros.carbs[0] | number: 0 }}g</p>
+            </div>
+            <div class="col-sm-2">
+              <p><strong class="hidden-md hidden-lg">Fat</strong> {{ macros.fat[0] | number: 0 }}g</p>
+            </div>
+            <div class="col-sm-2">
+              <p><strong class="hidden-md hidden-lg">Calories</strong> {{ macros.calories[0] | number: 0 }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="macro-row off-row">
+          <div class="row">
+            <div class="col-sm-4">
+              <h4>Tue / Thu / Sat<span ng-show="goal.id !== 1"> / Sun</span></h4>
+            </div>
+            <div class="col-sm-2">
+              <p><strong class="hidden-md hidden-lg">Protein</strong> {{ macros.protein[1] | number: 0 }}g</p>
+            </div>
+            <div class="col-sm-2">
+              <p><strong class="hidden-md hidden-lg">Carbs</strong> {{ macros.carbs[1] | number: 0 }}g</p>
+            </div>
+            <div class="col-sm-2">
+              <p><strong class="hidden-md hidden-lg">Fat</strong> {{ macros.fat[1] | number: 0 }}g</p>
+            </div>
+            <div class="col-sm-2">
+              <p><strong class="hidden-md hidden-lg">Calories</strong> {{ macros.calories[1] | number: 0 }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="macro-row refeed-row" ng-if="goal.id === 1">
+          <div class="row">
+            <div class="col-sm-4">
+              <h4>Sunday Refeed</h4>
+            </div>
+            <div class="col-sm-2">
+              <p><strong class="hidden-md hidden-lg">Protein</strong> {{ macros.protein[2] | number: 0 }}g</p>
+            </div>
+            <div class="col-sm-2">
+              <p><strong class="hidden-md hidden-lg">Carbs</strong> {{ macros.carbs[2] | number: 0 }}g</p>
+            </div>
+            <div class="col-sm-2">
+              <p><strong class="hidden-md hidden-lg">Fat</strong> {{ macros.fat[2] | number: 0 }}g</p>
+            </div>
+            <div class="col-sm-2">
+              <p><strong class="hidden-md hidden-lg">Calories</strong> {{ macros.calories[2] | number: 0 }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end of MACRO CALCULATIONS -->
+  </div>
+  <!-- end of MAIN AREA -->
+
+  <!-- ASIDE INFO -->
+  <div class="col-sm-4">
+    <aside class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Instructions</h3>
+      </div>
+      <div class="panel-body">
+        <p>Enter your preferred metric, goal (fat loss or muscle gain), body weight, body fat estimation, gender, and activity level.</p>
+      </div>
+      <div class="panel-heading">
+        <h3 class="panel-title">Activity Levels Key</h3>
+      </div>
+      <div class="panel-body">
+        <p ng-repeat="activity in activities">
+          <strong>{{ activity.name }}</strong>: {{ activity.description }}
+        </li>
+      </div>
+    </aside>
+  </div>
+  <!-- end of ASIDE INFO -->
+
+</div>
