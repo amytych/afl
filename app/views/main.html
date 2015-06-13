@@ -8,29 +8,25 @@
       <div class="col-sm-6">
         <div class="form-group">
           <label for="metric-input">Preferred Metric</label>
-          <select id="metric-input" class="form-control" ng-model="metric" ng-options="metric.name for metric in metrics" ng-change="updateData('metric'); updateCalculations()"></select>
+          <select id="metric-input" class="form-control" ng-model="metric" ng-options="metric.name for metric in metrics"></select>
         </div>
         <div class="form-group">
           <label for="goal-input">Goal</label>
-          <select id="goal-input" class="form-control" ng-model="goal" ng-options="goal.name for goal in goals" ng-change="updateData('goal'); updateCalculations()"></select>
-        </div>
-        <div class="form-group">
-          <label for="gender-input">Gender</label>
-          <select id="gender-input" class="form-control" ng-model="gender" ng-options="gender.name for gender in genders" ng-change="updateData('gender'); updateCalculations()"></select>
+          <select id="goal-input" class="form-control" ng-model="goal" ng-options="goal.name for goal in goals"></select>
         </div>
         <div class="form-group">
           <label for="activity-input">Activity level</label>
-          <select id="activity-input" class="form-control" ng-model="activity" ng-options="activity.name for activity in activities" ng-change="updateData('activity'); updateCalculations()"></select>
+          <select id="activity-input" class="form-control" ng-model="activity" ng-options="activity.name for activity in activities"></select>
         </div>
       </div>
       <div class="col-sm-6">
         <div class="form-group">
           <label for="body-weight-input">Body Weight</label>
-          <input type="number" id="body-weight-input" class="form-control" ng-model="bodyWeight" ng-change="updateData('bodyWeight'); updateCalculations()" min="0" required>
+          <input type="number" id="body-weight-input" class="form-control" ng-model="bodyWeight" min="0" required>
         </div>
         <div class="form-group">
           <label for="body-fat-input">Body Fat Estimation (%)</label>
-          <input type="number" id="body-fat-input" class="form-control" ng-model="bodyFat" ng-change="updateData('bodyFat'); updateCalculations()" min="0" required>
+          <input type="number" id="body-fat-input" class="form-control" ng-model="bodyFat" min="0" required>
         </div>
         <div class="panel panel-primary maintenance-intake">
           <div class="panel-heading">
@@ -113,10 +109,10 @@
               <p><strong class="hidden-md hidden-lg">Protein</strong> {{ macros.protein[2] | number: 0 }}g</p>
             </div>
             <div class="col-sm-2">
-              <p><strong class="hidden-md hidden-lg">Carbs</strong> {{ macros.carbs[2] | number: 0 }}g</p>
+              <p><strong class="hidden-md hidden-lg">Carbs</strong> {{ macros.carbs[2][0] | number: 0 }}g – {{ macros.carbs[2][1] | number: 0 }}g</p>
             </div>
             <div class="col-sm-2">
-              <p><strong class="hidden-md hidden-lg">Fat</strong> {{ macros.fat[2] | number: 0 }}g</p>
+              <p><strong class="hidden-md hidden-lg">Fat</strong> {{ macros.fat[2][0] | number: 0 }}g – {{ macros.fat[2][1] | number: 0 }}g</p>
             </div>
             <div class="col-sm-2">
               <p><strong class="hidden-md hidden-lg">Calories</strong> {{ macros.calories[2] | number: 0 }}</p>
