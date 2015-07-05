@@ -1,6 +1,6 @@
 $panel-border-radius: 0;
-$panel-primary-heading-bg: #273037;
-$panel-primary-border: #273037;
+$panel-primary-heading-bg: #3D0702;
+$panel-primary-border: #3D0702;
 
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
@@ -20,9 +20,9 @@ ul, ol {
 
 header {
   margin-bottom: 15px;
-  background-color: #3d3e42;
-  border-top: 8px solid #222;
-  border-bottom: 1px solid #222;
+  background-color: #5A130D;
+  border-top: 8px solid #3D0702;
+  border-bottom: 1px solid #3D0702;
   color: #fff;
 }
 
@@ -35,6 +35,7 @@ footer {
 .box {
   background: #FFF;
   padding-top: 15px;
+  margin-top: 50px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -89,7 +90,7 @@ footer {
     }
 
     .training-row {
-      border-top: 1px solid #eee;
+      border-top: 1px solid #efe6e6;
     }
   }
 }
