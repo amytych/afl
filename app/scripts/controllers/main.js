@@ -59,7 +59,8 @@ angular.module('lgn365App')
 
 
     function calculateMaintenanceIntake () {
-      return $scope.metric.modifier * $scope.activity.value * $scope.bodyWeight;
+      var activityValue = dataService.getActivityValues($scope.bodyFat)[$scope.activity.id];
+      return $scope.metric.modifier * $scope.bodyWeight * activityValue;
     }
 
 
