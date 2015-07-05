@@ -38,10 +38,10 @@ angular.module("lgn365App").service("dataService", function() {
     }, this.getGoals = function() {
         return [{
             id: 0,
-            name: "Staggered With No Weekly Refeed"
+            name: "Staggered Fat Loss With No Weekly Refeed"
         }, {
             id: 1,
-            name: "Staggered With Weekly Refeed"
+            name: "Staggered Fat Loss With Weekly Refeed"
         }, {
             id: 2,
             name: "Maintenance"
